@@ -39,6 +39,8 @@
            "endOfLine":"auto"
          }],
          "react/prop-types": "off",
-         "no-unused-vars": "off"
+         "no-unused-vars": "off",
+         "no-restricted-syntax": "off",
+         "react/jsx-props-no-spreading": "off"
     }
 }
