@@ -3,7 +3,7 @@ import { render, screen } from '../../../test-utils/testing-library-utils';
 
 import Options from '../Options';
 
-test('update scoop subtotal when coops change', async () => {
+test('update scoop subtotal when scoops change', async () => {
   render(<Options optionType="scoops" />);
 
   // make sure total starts out $0.00
@@ -25,4 +25,26 @@ test('update scoop subtotal when coops change', async () => {
   userEvent.clear(chocolateInput);
   userEvent.type(chocolateInput, '2');
   expect(scoopsSubtotal).toHaveTextContent('6.00');
+});
+
+test('update toppings subtotal when toppings change', async () => {
+  render(<Options optionType="toppings" />);
+
+  const toppingsTotal = screen.getByText('Toppings total: $', { exact: false });
+  expect(toppingsTotal).toHaveTextContent('0.00');
+
+  const cherriesCheckbox = await screen.findByRole('checkbox', {
+    name: 'Cherries',
+  });
+  userEvent.click(cherriesCheckbox);
+  expect(toppingsTotal).toHaveTextContent('1.50');
+
+  const hotFudgetCheckbox = await screen.findByRole('checkbox', {
+    name: 'Hot fudge',
+  });
+  userEvent.click(hotFudgetCheckbox);
+  expect(toppingsTotal).toHaveTextContent('3.00');
+
+  userEvent.click(hotFudgetCheckbox);
+  expect(toppingsTotal).toHaveTextContent('1.50');
 });
