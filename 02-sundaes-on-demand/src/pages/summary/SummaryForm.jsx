@@ -8,8 +8,7 @@ export default function SummaryForm() {
   const [tcChecked, setTcChecked] = useState(false);
 
   const popover = (
-    <Popover id="popover-basic">
-      <Popover.Title as="h3">Popover right</Popover.Title>
+    <Popover id="termsandconditions-popover">
       <Popover.Content>No ice cream will actually be delivered</Popover.Content>
     </Popover>
   );
@@ -18,7 +17,7 @@ export default function SummaryForm() {
     <span>
       I agree to
       <OverlayTrigger placement="right" overlay={popover}>
-        <span style={{ color: 'blue' }}>Terms and Conditions</span>
+        <span style={{ color: 'blue' }}> Terms and Conditions</span>
       </OverlayTrigger>
     </span>
   );

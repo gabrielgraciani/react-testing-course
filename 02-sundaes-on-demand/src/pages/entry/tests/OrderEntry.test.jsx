@@ -4,7 +4,6 @@ import {
   screen,
   waitFor,
 } from '../../../test-utils/testing-library-utils';
-
 import OrderEntry from '../OrderEntry';
 import { server } from '../../../mocks/server';
 
@@ -20,7 +19,7 @@ test('handles error for scoops and toppings routes', async () => {
 
   render(<OrderEntry />);
 
-  waitFor(async () => {
+  await waitFor(async () => {
     const alerts = await screen.findAllByRole('alert');
     expect(alerts).toHaveLength(2);
   });
